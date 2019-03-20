@@ -1,7 +1,6 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
-
 function Header (props) {
   return (
     <AppBar position="static">
