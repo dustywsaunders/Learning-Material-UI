@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
-class Header extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Header</h1>
-      </div>
-    );
-  }
+
+function Header (props) {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+          <MenuIcon />
+        </IconButton> */}
+        <Typography variant="h6" color="inherit">
+          Exercise Database
+        </Typography>
+        {/* <Button color="inherit">Login</Button> */}
+      </Toolbar>
+    </AppBar>
+  );
 }
 
 export default Header;
