@@ -18,40 +18,58 @@ const styles = {
   }
 }
 
-export default ({ exercises }) => 
+export default ({ 
+  exercises, 
+  category, 
+  onSelect, 
+  exercise: {
+    id, 
+    title = 'Welcome!', 
+    description = 'Please select an exercise from the list.'
+  }
+}) => 
   <Grid container spacing={8}>
     <Grid item sm>
       <Paper style={styles.Paper}>
         {exercises.map(([group, exercises]) =>
-          <Fragment key={group}>
-            <Typography 
-              variant="headline"
-              style={{ textTransform: "capitalize" }}
-            >
-              {group}
-              <List component="ul">
-                {exercises.map(({ title }) =>
-                  <ListItem button key={title}>
-                    <ListItemText primary={title} />
-                  </ListItem>
-                )}
-              </List>
-            </Typography>
-          </Fragment>
+          !category || category === group
+            ? <Fragment key={group}>
+                <Typography 
+                  variant="headline"
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {group}
+                  <List component="ul">
+                    {exercises.map(({ id, title }) =>
+                      <ListItem 
+                        button 
+                        key={title}
+                        onClick={() => onSelect(id)}
+                      >
+                        <ListItemText 
+                          primary={title} 
+                        />
+                      </ListItem>
+                    )}
+                  </List>
+                </Typography>
+              </Fragment>
+            : null
         )}  
       </Paper>
     </Grid>
     <Grid item sm>
       <Paper style={styles.Paper}>
+        
         <Typography
           variant="display1"
         >
-          Welcome!
+          { title }
         </Typography>
         <Typography
           variant="subheading"
         >
-          Please select an exercise from the list.
+          { description }
         </Typography>
       </Paper>
     </Grid>
