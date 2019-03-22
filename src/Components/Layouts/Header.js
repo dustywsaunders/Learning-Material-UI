@@ -1,17 +1,25 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import {
+  AppBar, 
+  Toolbar, 
+  Typography
+} from '@material-ui/core';
+import CreateDialog from '../Exercises/Dialogs/Create'
 
 function Header (props) {
   return (
     <AppBar position="static">
       <Toolbar>
-        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-          <MenuIcon />
-        </IconButton> */}
-        <Typography variant="h6" color="inherit">
+        <Typography 
+          variant="h6" 
+          color="inherit"
+          style={{
+            flex: 1
+          }}
+          >
           Exercise Database
         </Typography>
-        {/* <Button color="inherit">Login</Button> */}
+        <CreateDialog/>
       </Toolbar>
     </AppBar>
   );
