@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import CreateDialog from '../Exercises/Dialogs/Create'
 
-function Header (props) {
+function Header ({ muscles, onExerciseCreate }) {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -19,7 +19,10 @@ function Header (props) {
           >
           Exercise Database
         </Typography>
-        <CreateDialog/>
+        <CreateDialog
+          muscles={muscles}
+          onCreate={onExerciseCreate}
+        />
       </Toolbar>
     </AppBar>
   );
