@@ -7,13 +7,14 @@ import {
   ListItem, 
   ListItemText,
   ListItemSecondaryAction,
-  IconButton
+  IconButton,
+  withStyles
 } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete' 
 import Edit from '@material-ui/icons/Edit' 
 import Form from './Form'
 
-const styles = {
+const styles = theme => ({
   Paper: { 
     padding: 20,
     marginTop: 8,
@@ -21,9 +22,10 @@ const styles = {
     height: 400,
     overflowY: 'auto'
   }
-}
+})
 
-export default ({ 
+export default withStyles(styles) (({ 
+  classes,
   muscles,
   exercises, 
   category, 
@@ -40,8 +42,8 @@ export default ({
   }
 }) => 
   <Grid container spacing={8}>
-    <Grid item sm>
-      <Paper style={styles.Paper}>
+    <Grid item xs={12} sm={6}>
+      <Paper className={classes.Paper}>
         {exercises.map(([group, exercises]) =>
           !category || category === group
             ? <Fragment key={group}>
@@ -81,8 +83,8 @@ export default ({
         )}  
       </Paper>
     </Grid>
-    <Grid item sm>
-      <Paper style={styles.Paper}>
+    <Grid item xs={12} sm={6}>
+      <Paper className={classes.Paper}>
         {editMode
           ? <Form
               exercise={exercise}
@@ -105,4 +107,4 @@ export default ({
       </Paper>
     </Grid>
   </Grid>
-
+)

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Paper, Tabs, Tab } from '@material-ui/core';
+import { Paper, Tabs, Tab, withWidth } from '@material-ui/core';
 
-function Footer ({ muscles, category, onSelect }) {
-  const index = category
-  ? muscles.findIndex(group => group === category) + 1
-  : 0
+export default withWidth()(
+  ({ muscles, category, onSelect, width }) => {
+    const index = category
+      ? muscles.findIndex(group => group === category) + 1
+      : 0
 
   const onIndexSelect = (e, index) => {
     onSelect(index === 0 ? '' : muscles[index - 1])
@@ -17,7 +18,9 @@ function Footer ({ muscles, category, onSelect }) {
         onChange={onIndexSelect}
         indicatorColor="primary"
         textColor="primary"
-        centered
+        centered={width !== 'xs'}
+        variant={width === 'xs' ? "scrollable" : null}
+        scrollButtons="on"
       >
         <Tab label="All" key="All"/>
         { muscles.map(group =>
@@ -26,6 +29,5 @@ function Footer ({ muscles, category, onSelect }) {
       </Tabs>
     </Paper>
   );
-}
+})
 
-export default Footer;

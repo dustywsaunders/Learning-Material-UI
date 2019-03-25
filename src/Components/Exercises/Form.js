@@ -6,13 +6,13 @@ import {
   Select,
   MenuItem,
   withStyles,
-  Button
+  Button,
 } from '@material-ui/core';
 
 const styles = theme => ({
   FormControl: {
-    width: 300
-  }
+    width: 250
+  },
 })
 
 export default withStyles(styles) (class extends Component {
@@ -29,10 +29,8 @@ export default withStyles(styles) (class extends Component {
     }
   }
 
-  componentWillReceiveProps({ exercise }) {
-    this.setState({
-      ...exercise
-    })
+  static getDerivedStateFromProps({ exercise }) {
+    return exercise ||  null
   }
 
   handleChange = name => ({ target: { value }}) =>
