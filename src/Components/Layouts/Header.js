@@ -4,7 +4,7 @@ import {
   Toolbar, 
   Typography
 } from '@material-ui/core';
-import CreateDialog from '../Exercises/Dialogs/Create'
+import CreateDialog from '../Exercises/Dialog'
 
 function Header ({ muscles, onExerciseCreate }) {
   return (
