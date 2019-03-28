@@ -35,15 +35,17 @@ export default class extends Component {
         onClick={this.handleToggle}
         >
         {
-          !this.state.open && 'Add'
+          !open && 'Add'
         }
         {
-          this.state.open && 'Close'
+          open && 'Close'
         }
       </Button>
       <Dialog
         open={open}
         onClose={this.handleToggle}
+        fullWidth
+        maxWidth='xs'
       >
         <DialogTitle>
           Create a new exercise

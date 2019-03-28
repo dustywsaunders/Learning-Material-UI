@@ -101,3 +101,6 @@ class App extends Component {
 }
 
 export default App;
+
+// Architect & Junior Full-Stack Web Developer from South Africa. Graduate from Codaisseur Web Academy. JS, React, Redux, HTML, CSS, Express, Koa, TypeORM & TS.
+
