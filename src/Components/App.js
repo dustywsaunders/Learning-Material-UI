@@ -71,7 +71,8 @@ class App extends Component {
 
   getContext = () => ({
     muscles,
-    ...this.state
+    ...this.state,
+    onCreate: this.handleExerciseCreate
   })
 
   render() {
@@ -82,10 +83,7 @@ class App extends Component {
       <Provider value={this.getContext()}>
       <Fragment>
       <CssBaseline/>
-        <Header
-          muscles={muscles}
-          onExerciseCreate={this.handleExerciseCreate}
-        />
+        <Header/>
         <Exercises
           exercise={exercise}
           category={category}
