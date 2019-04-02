@@ -7,6 +7,7 @@ import {
   Button,
 } from '@material-ui/core';
 import Form from './Form'
+import { Consumer } from '../../context'
 
 export default class extends Component {
   state = {
@@ -25,44 +26,49 @@ export default class extends Component {
   }
 
   render() {
-    const { open } = this.state,
-          { muscles } = this.props
+    const { open } = this.state
 
-    return <Fragment>
-      <Button 
-        variant="outlined" 
-        color='inherit'
-        onClick={this.handleToggle}
-        >
-        {
-          !open && 'Add'
-        }
-        {
-          open && 'Close'
-        }
-      </Button>
-      <Dialog
-        open={open}
-        onClose={this.handleToggle}
-        fullWidth
-        maxWidth='xs'
-      >
-        <DialogTitle>
-          Create a new exercise
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please fill out the form below
-          </DialogContentText>
+    return (
+      <Consumer>
+        {({ muscles }) => 
+          <Fragment>
+            <Button 
+              variant="outlined" 
+              color='secondary'
+              onClick={this.handleToggle}
+              >
+              {
+                !open && 'Add'
+              }
+              {
+                open && 'Close'
+              }
+            </Button>
+            <Dialog
+              open={open}
+              onClose={this.handleToggle}
+              fullWidth
+              maxWidth='xs'
+            >
+              <DialogTitle>
+                Create a new exercise
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  Please fill out the form below
+                </DialogContentText>
 
-        <Form
-          muscles={muscles}
-          onSubmit={this.handleFormSubmit}
-        />
-        
-        </DialogContent>
-      </Dialog>
-    </Fragment>
+              <Form
+                muscles={muscles}
+                onSubmit={this.handleFormSubmit}
+              />
+              
+              </DialogContent>
+            </Dialog>
+          </Fragment>
+        }
+      </Consumer>
+    )
   }
 }
   

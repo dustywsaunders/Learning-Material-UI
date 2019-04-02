@@ -3,6 +3,7 @@ import { CssBaseline } from '@material-ui/core';
 import { Header, Footer } from './Layouts'
 import Exercises from './Exercises'
 import { muscles, exercises } from '../store'
+import { Provider } from '../context'
 
 class App extends Component {
   state = {
@@ -68,11 +69,17 @@ class App extends Component {
       editMode: false
     }))
 
+  getContext = () => ({
+    muscles,
+    ...this.state
+  })
+
   render() {
     const exercises = this.getExercisesByMuscles(),
       { category, exercise, editMode } = this.state
 
     return (
+      <Provider value={this.getContext()}>
       <Fragment>
       <CssBaseline/>
         <Header
@@ -96,6 +103,7 @@ class App extends Component {
           onSelect={this.handleCategorySelect}
         />
       </Fragment>
+      </Provider>
     );
   }
 }
